@@ -12,6 +12,9 @@ export default defineComponent({
         month: 'long',
         day: 'numeric',
       })
+    },
+    isoDate(){
+      return new Date(this.date).toISOString().split('T')[0];
     }
   },
 
@@ -27,7 +30,7 @@ export default defineComponent({
       </li>
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
-        <time datetime="2020-01-01">{{ formatDate }}</time>
+        <time :datetime="isoDate">{{ formatDate }}</time>
       </li>
     </ul>`,
 });
