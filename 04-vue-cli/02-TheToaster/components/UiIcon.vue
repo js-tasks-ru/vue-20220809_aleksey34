@@ -64,4 +64,9 @@ export default {
 .icon {
   display: block;
 }
+
+.toast__icon {
+  margin-right: 12px;
+}
+
 </style>
