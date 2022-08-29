@@ -1,20 +1,20 @@
 <template>
   <div class="dropdown" :class="{ dropdown_opened: isOpen }">
-    <button 
-    type="button"  
+    <button
+    type="button"
     class="dropdown__toggle"
-    :class="{ dropdown__toggle_icon: hasIcon }"  
+    :class="{ dropdown__toggle_icon: hasIcon }"
     @click="isOpen = ! isOpen">
       <ui-icon v-if="hasIcon" :icon="selectedIcon" class="dropdown__icon" />
       <span>{{ selectedTitle }}</span>
     </button>
 
     <div class="dropdown__menu" role="listbox" v-show="isOpen">
-      <button 
+      <button
       class="dropdown__item"
       :class="{ dropdown__item_icon: hasIcon }"
-      role="option" 
-      type="button" 
+      role="option"
+      type="button"
       v-for="option in options"
       :key="option.value"
       @click="optionSelected(option)" >
@@ -67,7 +67,7 @@ export default {
       return undefined;
     },
     hasIcon(){
-      return this.options.find((option) => option.icon)
+      return this.options.some((option) => option.icon)
     }
   },
 
