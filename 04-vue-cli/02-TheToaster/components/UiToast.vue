@@ -1,17 +1,17 @@
 <template>
   <div class="toast" :class="toastClass">
     <ui-icon class="toast__icon" :icon="toastIcon" />
-    <span> {{ toastMessage }} </span>
+    <span>{{ toastMessage }}</span>
   </div>
 </template>
 
 <script>
 import UiIcon from './UiIcon.vue';
 
-export default{
-    name: 'UiToast',
-    components: { UiIcon },
-    props: ['toastClass', 'toastMessage', 'toastIcon'],
+export default {
+  name: 'UiToast',
+  components: {UiIcon},
+  props: ['toastClass', 'toastMessage', 'toastIcon'],
 }
 </script>
 
@@ -28,16 +28,21 @@ export default{
   font-size: 18px;
   line-height: 28px;
   width: auto;
-  margin-bottom: 20px;
 }
+
+.toast + .toast {
+  margin-top: 20px;
+}
+
 .toast.toast_success {
   color: var(--green);
 }
+
 .toast.toast_error {
   color: var(--red);
 }
+
 .toast__icon {
   margin-right: 12px;
 }
-
 </style>

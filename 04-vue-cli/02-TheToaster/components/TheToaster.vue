@@ -1,16 +1,12 @@
 <template>
-  <div class="toasts">
-    <div v-for="toast in toasts" class="toast" :class="toast.class">
-      <ui-toast :toast-class="toast.class" :toast-icon="toast.icon" :toast-message="toast.message"/>
-    </div>
-  </div>
+  <ui-toasts :toasts="toasts"></ui-toasts>
 </template>
 
 <script>
-import UiToast from './UiToast.vue';
+import UiToasts from './UiToasts.vue';
 
 const toastTypes = {
-  'sucsess' : {
+  'success' : {
     icon: 'check-circle',
     class: 'toast_success'
   },
@@ -22,22 +18,22 @@ const toastTypes = {
 
 export default {
   name: 'TheToaster',
-  components: { UiToast },
+  components: { UiToasts },
   data(){
     return {
       toasts: new Set()
     }
   },
 
-  methods:{
-    success(msg){
-      this.showToast(msg, 'sucsess')
+  methods: {
+    success(msg) {
+      this.showToast(msg, 'success')
     },
-    error(msg){
+    error(msg) {
       this.showToast(msg, 'error')
     },
     showToast(msg, type, delay = 5000){
-      var toast = {
+      const toast = {
         message: msg,
         class: toastTypes[type].class,
         icon: toastTypes[type].icon
@@ -46,26 +42,9 @@ export default {
       setTimeout((toast) => {
         this.toasts.delete(toast)
       }, delay, toast)
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style scoped>
-.toasts {
-  position: fixed;
-  bottom: 8px;
-  right: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  white-space: pre-wrap;
-  z-index: 999;
-}
-@media all and (min-width: 992px) {
-  .toasts {
-    bottom: 72px;
-    right: 112px;
-  }
-}
-</style>
+<style></style>
