@@ -7,6 +7,7 @@
     <p>
       <ui-dropdown v-model="selectedType" :options="agendaItemTypes" title="Событие" />
     </p>
+    
 
     <h2>Without icons</h2>
     <p>selectedLang = {{ selectedLang }}</p>
